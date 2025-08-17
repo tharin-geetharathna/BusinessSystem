@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="CENTER" spacing="30" stylesheets="@login-styles.css" styleClass="login-container" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gripsystem.grip.controller.LoginController">
+   <padding>
+      <Insets top="60" right="60" bottom="60" left="60" />
+   </padding>
+
+   <!-- Logo/Title Section -->
+   <VBox alignment="CENTER" spacing="15">
+      <Text styleClass="logo-text" text="GRIP" />
+      <Text styleClass="subtitle-text" text="Inventory &amp; Order Management System" />
+   </VBox>
+
+   <!-- Login Form -->
+   <VBox alignment="CENTER" spacing="25" styleClass="login-form">
+      <Text styleClass="login-title" text="Login" />
+      
+      <VBox alignment="CENTER" spacing="20" maxWidth="350">
+         <TextField fx:id="usernameField" promptText="Username" styleClass="login-input" />
+         <PasswordField fx:id="passwordField" promptText="Password" styleClass="login-input" />
+         
+         <Button  text="Login" onAction="#handleLogin" styleClass="login-button" />
+      </VBox>
+   </VBox>
+
+   <!-- Footer -->
+   <VBox alignment="CENTER" spacing="5">
+      <Text styleClass="footer-text" text="© 2024 grip.lk" />
+      <Text styleClass="footer-text" text="All rights reserved" />
+   </VBox>
+
+</VBox>

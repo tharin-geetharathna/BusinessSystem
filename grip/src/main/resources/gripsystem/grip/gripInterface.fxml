@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox stylesheets="@interface-styles.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gripsystem.grip.controller.MainInterfaceController">
+
+
+   <!-- Header with Logo -->
+   <HBox alignment="CENTER" spacing="20" styleClass="header">
+      <Text styleClass="logo-text" text="GRIP" />
+      <VBox alignment="CENTER_LEFT" spacing="5">
+         <Text styleClass="header-title" text="Inventory &amp; Order Management System" />
+         <Text styleClass="subtitle-text" text="Professional Business Management Solution" />
+      </VBox>
+   </HBox>
+
+   <!-- Main Content -->
+   <TabPane styleClass="main-tab-pane">
+      
+      <!-- Customer Orders Tab -->
+      <Tab closable="false" text="Customer Orders">
+         <VBox spacing="20" styleClass="tab-content">
+            <padding>
+               <Insets bottom="20" left="20" right="20" top="20" />
+            </padding>
+            
+            <!-- Order Form -->
+            <VBox spacing="15" styleClass="form-section">
+               <Text styleClass="section-title" text="Add New Order" />
+               
+               <GridPane hgap="15" vgap="10">
+                  <columnConstraints>
+                     <ColumnConstraints hgrow="NEVER" minWidth="100" prefWidth="120" />
+                     <ColumnConstraints hgrow="SOMETIMES" minWidth="200" prefWidth="250" />
+                     <ColumnConstraints hgrow="NEVER" minWidth="100" prefWidth="120" />
+                     <ColumnConstraints hgrow="SOMETIMES" minWidth="200" prefWidth="250" />
+                  </columnConstraints>
+                  
+                  <Label text="Customer Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                  <TextField fx:id="customerNameField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                  
+                  <Label text="Contact Number:" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                  <TextField fx:id="contactNumberField" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                  
+                  <Label text="Product Type:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="productTypeCombo" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  
+                  <Label text="Color:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="colorCombo" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  
+                  <Label text="Size:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                  <ComboBox fx:id="sizeCombo" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  
+                  <Label text="Quantity:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Spinner fx:id="quantitySpinner" editable="true" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <rowConstraints>
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                  </rowConstraints>
+               </GridPane>
+               
+               <HBox alignment="CENTER" spacing="10">
+                  <Button onAction="#addCustomerOrder" styleClass="primary-button" text="Add Order" />
+                  <Button onAction="#updateCustomerOrder" styleClass="secondary-button" text="Update Order" />
+                  <Button onAction="#deleteCustomerOrder" styleClass="danger-button" text="Delete Order" />
+               </HBox>
+            </VBox>
+            
+            <!-- Orders Table -->
+            <VBox spacing="10" styleClass="table-section">
+               <Text styleClass="section-title" text="Customer Orders" />
+               <TableView fx:id="customerTable" VBox.vgrow="ALWAYS">
+                  <columns>
+                     <TableColumn fx:id="nameCol" prefWidth="128.0" text="Name" />
+                     <TableColumn fx:id="contactCol" prefWidth="104.0" text="Contact" />
+                     <TableColumn fx:id="productCol" prefWidth="160.0" text="Product" />
+                     <TableColumn fx:id="colorCol" prefWidth="75.0" text="Color" />
+                     <TableColumn fx:id="sizeCol" text="Size" />
+                     <TableColumn fx:id="quantityCol" prefWidth="73.0" text="Quantity" />
+                     <TableColumn fx:id="priceCol" prefWidth="111.0" text="Total Price" />
+                     <TableColumn fx:id="dateCol" prefWidth="86.0" text="Date" />
+                  </columns>
+               </TableView>
+            </VBox>
+         </VBox>
+      </Tab>
+      
+      <!-- Expenses Tab -->
+      <Tab closable="false" text="Expenses">
+         <VBox spacing="20" styleClass="tab-content">
+            <padding>
+               <Insets bottom="20" left="20" right="20" top="20" />
+            </padding>
+            
+            <!-- Expense Form -->
+            <VBox spacing="15" styleClass="form-section">
+               <Text styleClass="section-title" text="Add New Expense" />
+               
+               <GridPane hgap="15" vgap="10">
+                  <columnConstraints>
+                     <ColumnConstraints hgrow="NEVER" minWidth="100" prefWidth="120" />
+                     <ColumnConstraints hgrow="SOMETIMES" minWidth="300" prefWidth="400" />
+                     <ColumnConstraints hgrow="NEVER" minWidth="100" prefWidth="120" />
+                     <ColumnConstraints hgrow="SOMETIMES" minWidth="200" prefWidth="250" />
+                  </columnConstraints>
+                  
+                  <Label text="Description:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                  <TextField fx:id="expenseDescriptionField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                  
+                  <Label text="Amount:" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                  <TextField fx:id="expenseAmountField" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                  <rowConstraints>
+                     <RowConstraints />
+                  </rowConstraints>
+               </GridPane>
+               
+               <HBox alignment="CENTER" spacing="10">
+                  <Button onAction="#addExpense" styleClass="primary-button" text="Add Expense" />
+                  <Button onAction="#updateExpense" styleClass="secondary-button" text="Update Expense" />
+                  <Button onAction="#deleteExpense" styleClass="danger-button" text="Delete Expense" />
+               </HBox>
+            </VBox>
+            
+            <!-- Expenses Table -->
+            <VBox spacing="10" styleClass="table-section">
+               <Text styleClass="section-title" text="Expenses" />
+               <TableView fx:id="expenseTable" VBox.vgrow="ALWAYS">
+                  <columns>
+                     <TableColumn fx:id="descriptionCol" prefWidth="379.0" text="Description" />
+                     <TableColumn fx:id="amountCol" minWidth="0.0" prefWidth="109.0" text="Amount" />
+                     <TableColumn fx:id="expenseDateCol" minWidth="0.0" prefWidth="82.0" text="Date" />
+                  </columns>
+               </TableView>
+            </VBox>
+         </VBox>
+      </Tab>
+      
+      <!-- Inventory Tab -->
+      <Tab closable="false" text="Inventory">
+         <VBox spacing="20" styleClass="tab-content">
+            <padding>
+               <Insets bottom="20" left="20" right="20" top="20" />
+            </padding>
+            
+            <!-- Inventory Form -->
+            <VBox spacing="15" styleClass="form-section">
+               <Text styleClass="section-title" text="Manage Inventory" />
+               
+               <GridPane hgap="15" vgap="10">
+                  <columnConstraints>
+                     <ColumnConstraints hgrow="NEVER" minWidth="100" prefWidth="120" />
+                     <ColumnConstraints hgrow="SOMETIMES" minWidth="150" prefWidth="200" />
+                     <ColumnConstraints hgrow="NEVER" minWidth="100" prefWidth="120" />
+                     <ColumnConstraints hgrow="SOMETIMES" minWidth="150" prefWidth="200" />
+                     <ColumnConstraints hgrow="NEVER" minWidth="100" prefWidth="120" />
+                     <ColumnConstraints hgrow="SOMETIMES" minWidth="150" prefWidth="200" />
+                  </columnConstraints>
+                  
+                  <Label text="Product Type:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                  <ComboBox fx:id="invProductTypeCombo" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                  
+                  <Label text="Color:" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                  <ComboBox fx:id="invColorCombo" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                  
+                  <Label text="Size:" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+                  <ComboBox fx:id="invSizeCombo" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+                  
+                  <Label text="Quantity:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                  <Spinner fx:id="invQuantitySpinner" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  
+                  <Label text="Price:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <TextField fx:id="invPriceField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <rowConstraints>
+                     <RowConstraints />
+                     <RowConstraints />
+                  </rowConstraints>
+               </GridPane>
+               
+               <HBox alignment="CENTER" spacing="10">
+                  <Button onAction="#addInventory" styleClass="primary-button" text="Add/Update Inventory" />
+                  <Button onAction="#updateInventory" styleClass="secondary-button" text="Update Selected" />
+                  <Button onAction="#deleteInventory" styleClass="danger-button" text="Delete Selected" />
+               </HBox>
+            </VBox>
+            
+            <!-- Inventory Table -->
+            <VBox spacing="10" styleClass="table-section">
+               <Text styleClass="section-title" text="Current Inventory" />
+               <TableView fx:id="inventoryTable" VBox.vgrow="ALWAYS">
+                  <columns>
+                     <TableColumn fx:id="invProductCol" prefWidth="160.0" text="Product" />
+                     <TableColumn fx:id="invColorCol" prefWidth="64.0" text="Color" />
+                     <TableColumn fx:id="invSizeCol" prefWidth="59.0" text="Size" />
+                     <TableColumn fx:id="invQuantityCol" text="Quantity" />
+                     <TableColumn fx:id="invPriceCol" prefWidth="64.0" text="Price" />
+                  </columns>
+               </TableView>
+            </VBox>
+         </VBox>
+      </Tab>
+      
+      <!-- Profit Tab -->
+      <Tab closable="false" text="Profit Analysis">
+         <VBox alignment="CENTER" spacing="30" styleClass="tab-content">
+            <padding>
+               <Insets bottom="50" left="50" right="50" top="50" />
+            </padding>
+            
+            <Text styleClass="profit-title" text="Profit Analysis" />
+            
+            <VBox spacing="20" styleClass="profit-summary">
+               <HBox alignment="CENTER" spacing="20">
+                  <VBox alignment="CENTER" spacing="10" styleClass="profit-card">
+                     <Text styleClass="profit-label" text="Total Sales" />
+                     <Label fx:id="totalSalesLabel" styleClass="profit-value" text="0.00" />
+                  </VBox>
+                  
+                  <VBox alignment="CENTER" spacing="10" styleClass="profit-card">
+                     <Text styleClass="profit-label" text="Total Expenses" />
+                     <Label fx:id="totalExpensesLabel" styleClass="profit-value" text="0.00" />
+                  </VBox>
+                  
+                  <VBox alignment="CENTER" spacing="10" styleClass="profit-card">
+                     <Text styleClass="profit-label" text="Net Profit" />
+                     <Label fx:id="profitLabel" styleClass="profit-value" text="0.00" />
+                  </VBox>
+               </HBox>
+            </VBox>
+            
+            <Text styleClass="profit-note" text="Profit is automatically calculated based on sales and expenses" />
+         </VBox>
+      </Tab>
+      
+   </TabPane>
+
+</VBox>
